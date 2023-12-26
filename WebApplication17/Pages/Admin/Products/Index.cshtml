@@ -1,0 +1,43 @@
+﻿@page
+@model WebApplication17.Pages.Admin.Products.IndexModel
+
+
+<p>
+    <a asp-page="Create" class="btn btn-success">Create New</a>
+</p>
+
+@foreach (var item in Model.Product)
+{
+    <div class="card" style="width:1000px; height:300px">
+        <div class="row">
+            <div class="col-4">
+                <img src="~/Image/@item.ImgUrl" height="300px" width="300px" />
+            </div>
+            <div class="col-8">
+                <div class="card-body">
+                    <ul class="list-group" style="text-decoration:none">
+                        <li class="list-group">
+                            <a href="/Admin/Products/Details/@item.Id" style="text-decoration:none">
+                                @item.Name @item.Description
+                            </a>
+                        </li>
+                        <li class="list-group">
+                            <form method="post" asp-page="Index" asp-page-handler="AddToCart">
+                                <input type="hidden" name="productId"value="@item.Id"/>
+                                <button type="submit" class="card-link text-end">
+                                    uhig978t9g
+                                </button>
+                            </form>
+                        </li>
+                        <li class="list-group" style="text-decoration:none">
+                            <a href="#">@item.Cost</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col">
+
+            </div>
+        </div>
+    </div>
+}

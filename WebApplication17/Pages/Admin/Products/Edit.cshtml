@@ -1,0 +1,61 @@
+﻿@page
+@model WebApplication17.Pages.Admin.Products.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Product</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="EditProduct.Id" />
+            <div class="form-group">
+                <label asp-for="EditProduct.Name" class="control-label"></label>
+                <input asp-for="EditProduct.Name" class="form-control" />
+                <span asp-validation-for="EditProduct.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EditProduct.Description" class="control-label"></label>
+                <input asp-for="EditProduct.Description" class="form-control" />
+                <span asp-validation-for="EditProduct.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EditProduct.Cost" class="control-label"></label>
+                <input asp-for="EditProduct.Cost" class="form-control" />
+                <span asp-validation-for="EditProduct.Cost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EditProduct.Skidka" class="control-label"></label>
+                <input asp-for="EditProduct.Skidka" class="form-control" />
+                <span asp-validation-for="EditProduct.Skidka" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EditProduct.ImgUrl" class="control-label"></label>
+                <input asp-for="EditProduct.ImgUrl" class="form-control" type="file" />
+                <span asp-validation-for="EditProduct.ImgUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EditProduct.CategoryId" class="control-label"></label>
+                <select asp-for="EditProduct.CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                <span asp-validation-for="EditProduct.CategoryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

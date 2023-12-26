@@ -1,0 +1,42 @@
+﻿@page
+@model WebApplication17.Pages.Cart.IndexModel
+@{
+}
+@foreach (var item in Model.CartItems)
+{
+    <div class="card" style="width:1000px; height:300px">
+        <div class="row">
+            <div class="col-4">
+                <img src="~/Image/@item.Product.ImgUrl" height="300px" width="300px" />
+            </div>
+            <div class="col-8">
+                <div class="card-body">
+                    <ul class="list-group" style="text-decoration:none">
+                        <li class="list-group">
+                            <a href="/Admin/Products/Details/@item.Product.Id" style="text-decoration:none">
+                                @item.Product.Name @item.Product.Description
+                            </a>
+                        </li>
+                        <li class="list-group">
+                            <form method="post" asp-page-handler="Delete" asp-route-productid="@item.ProductId">
+                                <button type="submit" class="card-link text-end">
+                                    удалить
+                                </button>
+                            </form>
+                            <form method="post" asp-page-handler="Order" asp-route-productid="@item.ProductId">
+                                <button type="submit" class="card-link text-end">
+                                    Заказать
+                                </button>
+                            </form>
+                        </li>
+                        <li class="list-group" style="text-decoration:none">
+                            <a href="#">@item.Product.Cost</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col">
+            </div>
+        </div>
+    </div>
+}
